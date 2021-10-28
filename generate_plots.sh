@@ -3,12 +3,9 @@
 echo Generating plots...
 echo ${bold}Note: This could take a while.${normal}
 
-# Set up pyenv/venv/conda/etc. environment so that you can load the necessary packages
-source venv_betting/bin/activate
-
 cd simulations
 
-declare -a sim_dirs=[
+declare -a sim_dirs=(
     'aKelly_lambdas'
     'CM-EB_vs_PM-EB'
     'Fixed-time'
@@ -23,7 +20,7 @@ declare -a sim_dirs=[
     'Time-uniform_everything'
     'WoR_Fixed-time'
     'WoR_time-uniform'
-]
+)
 
 for sim_dir in ${sim_dirs[@]}
 do
