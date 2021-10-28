@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH -p LM
+#SBATCH -N 1
+#SBATCH --mem 3000GB
+#SBATCH -t 00:25:00
+#SBATCH --mail-type=ALL
+
+# Load Anaconda
+# module load anaconda3
+
+python simulations.py
