@@ -5,7 +5,7 @@ backcall==0.2.0
 -e git+ssh://git@github.com/WannabeSmith/bentkus_conf_seq.git@88f5820f27d6a286a7e9b6a98e444e450b363cd9#egg=bentkus_conf_seq
 black==21.7b0
 click==8.0.1
--e git+ssh://git@github.com/WannabeSmith/confseq.git@0fbfce17542d69c897a47f6b61402d8067b3cd14#egg=confseq
+-e git+ssh://git@github.com/WannabeSmith/confseq.git@35aea3d729fdb24edd39db75e2603596f8ea62a4#egg=confseq
 cycler==0.10.0
 debugpy==1.4.1
 decorator==5.0.9
