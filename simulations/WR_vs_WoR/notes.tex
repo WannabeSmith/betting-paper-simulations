@@ -1,0 +1,66 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[numbers]{natbib}
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage[colorlinks,linkcolor=magenta,citecolor=blue, pagebackref=true]{hyperref}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[T1]{fontenc}
+
+\newcommand{\EE}{\mathbb E}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\QQ}{\mathbb Q}
+
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Xcal}{\mathcal X}
+
+
+\newcommand{\wor}{\mathrm{WoR}}
+
+\title{With-replacement vs without-replacement notes}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Suppose $\mu := \frac{1}{N} \sum_{i=1}^N X_i \gg m$. Write out the WoR capital
+process
+\begin{align*}
+  K_t^\wor(m) &:= \prod_{i=1}^t(1 + \lambda_i(X_i - m_t^\wor))\\
+  \text{where } m_t &:= \frac{Nm - \sum_{i=1}^{t-1} X_i }{N - t + 1}.
+\end{align*}
+Suppose for the sake of example that $t - 1 = N/2$. Then, consider the marginal mean
+$\EE(m_t^\wor)$ of $m_t^\wor$,
+\begin{align*}
+  \EE (m_t^\wor) &= \frac{Nm - \sum_{i=1}^{N/2}\EE(X_i) }{N/2} \\
+      &= \frac{Nm - \mu N/2}{N/2} \\
+      &=2m - \mu.
+\end{align*}
+As such, we have that
+\[ \EE(X_t - m_t^\wor) = \mu - 2m + \mu = 2(\mu - m). \]
+Contrast this with what we would have in the with-replacement regime,
+\[ \EE(X_t - m) = \mu - m, \]
+which is half the size of $\EE(X_t - m_t^\wor)$.
+
+More generally, suppose that $t - 1 = N\delta$ for some $\delta \in (0, 1)$ such
+that $N\delta$ is an integer (avoiding uninteresting technicalities). Then,
+\[ \EE (m_t^\wor) = \frac{Nm - N\delta \mu}{(1-\delta)N} = \frac{m - \delta\mu}{1-\delta}. \]
+It is easy to then show that
+\[ \EE (X_t - m_t^\wor) = \frac{\mu - m}{1-\delta},\]
+or alternatively written,
+\[ \EE(X_t - m_t^\wor) = \frac{\EE(X_t - m)}{(1-\delta)}. \]
+Therefore, for small $t$ (i.e. close to 1), we have that
+$\EE(X_t - m_t^\wor) \approx \EE(X_t - m)$, while if $t$ is large (i.e.
+approaching $N$), we have
+\[ \EE(X_t - m_t^\wor) \gg \EE(X_t - m) \]
+Rewriting $\delta = \frac{t-1}{N}$, we have
+\[ \EE(X_t - m_t^\wor) = \frac{N - t + 1}{N} \]
+Fix $\lambda \in (0, 1)$, and consider the expected WoR wealth,
+\[ \EE \left (  \prod_{i=1}^t (1 + \lambda(X_i - m_t^\wor)) \right ) = \prod_{i=1}^t \left ( 1 + \lambda\frac{N(\mu - m)}{N - i+1} \right  )\]
+versus the expected WR wealth
+\[ \prod_{i=1}^t \left ( 1 + \lambda(\mu - m) \right  )\]
+
+\end{document}

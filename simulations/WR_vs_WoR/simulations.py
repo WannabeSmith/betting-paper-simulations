@@ -1,0 +1,102 @@
+import numpy as np
+from confseq.betting import diversified_betting_mart
+import math
+
+import matplotlib.pyplot as plt
+
+mu = 0.5
+m = 0.55
+Ns = [50, 100, 500, 1000]  # 1500, 2000]
+alpha = 0.05
+D = 20
+
+
+def get_wr_sample_from_wor(data):
+    unique_data = set()
+    unique_data_locations = []
+    data_id = list(range(len(data)))
+    sample = []
+
+    iteration = 0
+    while len(unique_data) < len(data_id):
+        random_data_id = np.random.choice(data_id)
+        if random_data_id not in unique_data:
+            unique_data_locations.append(iteration)
+            unique_data.add(random_data_id)
+
+        sample.append(data[random_data_id])
+        iteration += 1
+
+    assert len(unique_data) == len(data)
+    assert max(unique_data_locations) <= len(sample)
+
+    return (sample, unique_data_locations)
+
+
+for N in Ns:
+    hgKelly_mart_wr = lambda x, m: diversified_betting_mart(
+        x,
+        m,
+        alpha=alpha,
+        lambdas_fns_positive=[lambda x, m, i=i: (i + 1) / (D + 1) for i in range(D)],
+        N=None,
+        convex_comb=True,
+        theta=1 / 2,
+        trunc_scale=1,
+        m_trunc=True,
+    )
+
+    hgKelly_mart_wor = lambda x, m: diversified_betting_mart(
+        x,
+        m,
+        alpha=alpha,
+        lambdas_fns_positive=[lambda x, m, i=i: (i + 1) / (D + 1) for i in range(D)],
+        N=N,
+        convex_comb=True,
+        theta=1 / 2,
+        trunc_scale=1,
+        m_trunc=True,
+    )
+
+    data = np.append(np.ones(int(N * mu)), np.zeros(N - int(N * mu)))
+
+    sample, unique_data_loc = get_wr_sample_from_wor(data)
+    sample_wor = [sample[i] for i in unique_data_loc]
+    assert np.sum(sample_wor) == np.sum(data)
+
+    proc_wr = hgKelly_mart_wr(x=sample, m=m)
+    proc_wor = hgKelly_mart_wor(x=sample_wor, m=m)
+
+    proc_wr_unique = [proc_wr[i] for i in np.maximum.accumulate(unique_data_loc)]
+    # proc_wr_unique = np.where(proc_wor == math.inf, math.inf, proc_wr_unique)
+    proc_wr_raw = proc_wr  # proc_wr[0 : len(data)]
+
+    times = np.arange(1, len(sample) + 1)
+
+    assert len(proc_wr_unique) == len(proc_wor)
+    plt.plot(
+        np.array(unique_data_loc) + 1,
+        proc_wr_unique,
+        label="WR unique",
+        color="tab:blue",
+        linestyle="-",
+    )
+    plt.plot(times, proc_wr_raw, label="WR raw", color="tab:green", linestyle="--")
+    plt.plot(
+        # np.array(unique_data_loc) + 1,
+        proc_wor,
+        label="WoR",
+        color="tab:red",
+        linestyle="-.",
+    )
+
+    plt.title(r"$N = " + str(N) + "$")
+
+    plt.xlabel("Samples")
+    plt.ylabel("Wealth")
+
+    plt.yscale("log")
+
+    plt.legend(loc="best")
+    plt.savefig("wr_wor_wealth_N=" + str(N) + ".pdf")
+    plt.show()

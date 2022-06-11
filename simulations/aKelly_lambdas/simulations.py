@@ -49,7 +49,7 @@ for m in ms:
 
 
 ax[0].set_xscale('log')
-ax[0].set_ylabel(r'$\lambda_t^{\mathregular{aKelly}}$')
+ax[0].set_ylabel(r'$\lambda_t^{\mathregular{aGRAPA}}$')
 ax[0].set_xlabel(r'$t$')
 ax[0].set_ylim(-2, 2)
 ax[1].set_xscale('log')

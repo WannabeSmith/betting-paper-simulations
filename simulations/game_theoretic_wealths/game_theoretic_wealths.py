@@ -13,10 +13,10 @@ from confseq.betting import betting_mart
 truncation = 0.5
 
 wealth_processes = {
-    "Kelly": lambda x, m: betting_mart(
+    "GRAPA": lambda x, m: betting_mart(
         x, m, lambdas_fn_positive=lambda_Kelly, theta=1, trunc_scale=truncation
     ),
-    "aKelly": lambda x, m: betting_mart(
+    "aGRAPA": lambda x, m: betting_mart(
         x, m, lambdas_fn_positive=lambda_aKelly, theta=1, trunc_scale=truncation
     ),
     "LBOW": lambda x, m: betting_mart(
@@ -29,7 +29,7 @@ wealth_processes = {
         axis=0,
     ),
 }
-linestyles = {"Kelly": "-", "aKelly": "--", "LBOW": "-.", "gKelly": ":"}
+linestyles = {"GRAPA": "-", "aGRAPA": "--", "LBOW": "-.", "gKelly": ":"}
 computation_times = {}
 
 N = 500
