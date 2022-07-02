@@ -49,7 +49,7 @@ cs_list = [
                            running_intersection=False,
                            m_trunc=False,
                            trunc_scale=3/4),
-        r'PM',
+        r'PrPl',
         'tab:orange',
         '--'
     ),
@@ -60,7 +60,7 @@ cs_list = [
                                  running_intersection=False,
                                  m_trunc=True,
                                  trunc_scale=3/4),
-        r'PM, $m$',
+        r'PrPl, $m$',
         'tab:blue',
         '-.'
     ),
@@ -71,7 +71,7 @@ cs_list = [
                                  running_intersection=True,
                                  m_trunc=True,
                                  trunc_scale=3/4),
-        r'PM, $m$, $\cap_{i=1}^n$',
+        r'PrPl, $m$, $\cap_{i=1}^n$',
         'tab:green',
         ':'
     ),

@@ -1,0 +1,32 @@
+from confseq.betting import betting_mart
+from confseq.betting_strategies import (
+    lambda_aKelly,
+    lambda_LBOW,
+    lambda_Kelly,
+)
+import numpy as np
+import matplotlib.pyplot as plt
+
+breaks = 1000
+x = np.random.binomial(1, 0.5, 100)
+
+m_list = np.arange(1 / breaks, 1, step=1 / breaks)
+
+betting_strategies = {
+    "GRAPA": lambda_Kelly,
+    "aGRAPA": lambda_aKelly,
+    "LBOW": lambda_LBOW,
+}
+
+for strat_name, strat_fn in betting_strategies.items():
+    one_by_wealth = [
+        1 / betting_mart(x, m, lambdas_fn_positive=strat_fn, theta=1)[-1]
+        for m in m_list
+    ]
+
+    plt.plot(m_list, one_by_wealth, label=strat_name)
+
+plt.legend(loc="best")
+plt.xlabel("m")
+plt.ylabel("1/wealth")
+plt.savefig("figures/onebywealth.pdf")
