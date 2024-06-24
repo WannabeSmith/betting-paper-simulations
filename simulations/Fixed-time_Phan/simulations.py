@@ -55,7 +55,7 @@ cs_list = [
         lambda x: predmix_empbern_ci_seq(
             x, times=times, truncation=1 / 2, alpha=alpha, parallel=True
         ),
-        "PrPl-EB-CI [Rmk 1]",
+        "PrPl-EB-CI",
         "tab:blue",
         "--",
     ),
@@ -63,7 +63,7 @@ cs_list = [
         lambda x: betting_ci_seq(
             x, times=times, alpha=alpha, parallel=True, m_trunc=True, trunc_scale=3 / 4
         ),
-        "Hedged-CI [Rmk 3]",
+        "Hedged-CI",
         "tab:green",
         ":",
     ),

@@ -22,7 +22,7 @@ alpha = 0.05
 cs_list = [
     ConfseqToPlot(
         lambda x: predmix_hoeffding_cs(x, alpha=alpha, running_intersection=True),
-        "PrPl-H [Prop 1]",
+        "PrPl-H",
         "tab:orange",
         "-.",
     ),
@@ -30,7 +30,7 @@ cs_list = [
         lambda x: predmix_empbern_cs(
             x, truncation=0.5, alpha=alpha, running_intersection=True
         ),
-        "PrPl-EB [Thm 2]",
+        "PrPl-EB",
         "tab:blue",
         "--",
     ),
@@ -38,7 +38,7 @@ cs_list = [
         lambda x: betting_cs(
             x, breaks=1000, alpha=alpha, parallel=True, running_intersection=True
         ),
-        r"Hedged [Thm 4]",
+        r"Hedged",
         "tab:green",
         "-",
     ),

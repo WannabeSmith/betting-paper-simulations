@@ -54,7 +54,7 @@ ci_list = [
             m_trunc=True,
             trunc_scale=3 / 4,
         ),
-        "Hedged-WoR-CI [Rmk 4]",
+        "Hedged-WoR-CI",
         "tab:green",
         ":",
     ),

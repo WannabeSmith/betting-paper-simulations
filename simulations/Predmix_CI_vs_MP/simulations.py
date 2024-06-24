@@ -41,7 +41,7 @@ cs_list = [
         lambda x: predmix_empbern_ci_seq(
             x, times=times, truncation=1 / 2, alpha=alpha, parallel=True
         ),
-        "PrPl-EB-CI [Rmk 1]",
+        "PrPl-EB-CI",
         "tab:blue",
         ":",
     ),

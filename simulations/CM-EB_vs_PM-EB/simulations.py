@@ -29,7 +29,7 @@ cs_list = [
     ConfseqToPlot(
         lambda x: predmix_empbern_cs(x, alpha=alpha,
                                      running_intersection=True),
-        'PrPl-EB [Thm 2]',
+        'PrPl-EB',
         'tab:blue',
         '--'
     ),

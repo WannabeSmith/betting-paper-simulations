@@ -27,7 +27,7 @@ def a_bentkus(x: Sequence[float], alpha: float, eta: float, power: float):
 cs_list = [
     ConfseqToPlot(
         lambda x: predmix_hoeffding_cs(x, alpha=alpha, running_intersection=True),
-        "PrPl-H [Prop 1]",
+        "PrPl-H",
         "tab:orange",
         "-.",
     ),
@@ -35,7 +35,7 @@ cs_list = [
         lambda x: predmix_empbern_cs(
             x, truncation=0.5, alpha=alpha, running_intersection=True
         ),
-        "PrPl-EB [Thm 2]",
+        "PrPl-EB",
         "tab:blue",
         "--",
     ),
@@ -48,7 +48,7 @@ cs_list = [
             parallel=True,
             running_intersection=True,
         ),
-        "Hedged [Thm 3]",
+        "Hedged",
         "tab:green",
         "-",
     ),
