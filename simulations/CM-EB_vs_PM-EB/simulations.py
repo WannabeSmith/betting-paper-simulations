@@ -15,12 +15,12 @@ from confseq.predmix import predmix_empbern_cs
 from confseq.conjmix_bounded import conjmix_empbern_cs
 from confseq.cs_plots import ConfseqToPlot, DataGeneratingProcess, plot_CSs
 
-N = 1000
+N = 10000
 alpha = 0.05
 
 cs_list = [
     ConfseqToPlot(
-        lambda x: conjmix_empbern_cs(x, v_opt=100/4, alpha=0.05,
+        lambda x: conjmix_empbern_cs(x, v_opt=60/4, alpha=alpha,
                                      running_intersection=True),
         'CM-EB [HRMS20]',
         'tab:red',

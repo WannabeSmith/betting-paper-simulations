@@ -102,14 +102,14 @@ dgp_list = [
     #     discrete = False,
     #     title = '$X_i \sim$ Beta(1, 1)'
     # ),
-    DataGeneratingProcess(
-        data_generator_fn=lambda: np.random.beta(10, 30, N),
-        dist_fn=lambda x: beta.pdf(x, 10, 30),
-        mean=1/4,
-        name='Beta_10,_30_',
-        discrete=False,
-        title='$X_i \sim$ Beta(10, 30)'
-    )
+    # DataGeneratingProcess(
+    #     data_generator_fn=lambda: np.random.beta(10, 30, N),
+    #     dist_fn=lambda x: beta.pdf(x, 10, 30),
+    #     mean=1/4,
+    #     name='Beta_10,_30_',
+    #     discrete=False,
+    #     title='$X_i \sim$ Beta(10, 30)'
+    # )
 ]
 
 plot_CSs(dgp_list, cs_list, times=times,

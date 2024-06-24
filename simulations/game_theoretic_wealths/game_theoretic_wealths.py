@@ -5,7 +5,7 @@ import sys
 import os
 from time import time
 
-sys.path.append(os.path.relpath("../../"))
+# sys.path.append(os.path.relpath("../../"))
 
 from confseq.betting_strategies import lambda_Kelly, lambda_aKelly, lambda_LBOW
 from confseq.betting import betting_mart

@@ -91,24 +91,24 @@ dgp_list = [
         title="Discrete 0/1 high variance",
         WoR=True
     ),
-    DataGeneratingProcess(
-        data_generator_fn=generate_data_generator(x_binom01),
-        name="Bernoulli_0.1__WoR",
-        title="Discrete 0/1 low variance",
-        WoR=True
-    ),
-    DataGeneratingProcess(
-        data_generator_fn=generate_data_generator(x_beta11),
-        name="Beta_1,_1__WoR",
-        title="Real-valued evenly spread",
-        WoR=True
-    ),
-    DataGeneratingProcess(
-        data_generator_fn=generate_data_generator(x_beta1030),
-        name="Beta_10,_30__WoR",
-        title="Real-valued concentrated",
-        WoR=True
-    ),
+    # DataGeneratingProcess(
+    #     data_generator_fn=generate_data_generator(x_binom01),
+    #     name="Bernoulli_0.1__WoR",
+    #     title="Discrete 0/1 low variance",
+    #     WoR=True
+    # ),
+    # DataGeneratingProcess(
+    #     data_generator_fn=generate_data_generator(x_beta11),
+    #     name="Beta_1,_1__WoR",
+    #     title="Real-valued evenly spread",
+    #     WoR=True
+    # ),
+    # DataGeneratingProcess(
+    #     data_generator_fn=generate_data_generator(x_beta1030),
+    #     name="Beta_10,_30__WoR",
+    #     title="Real-valued concentrated",
+    #     WoR=True
+    # ),
 ]
 
 plot_CSs(

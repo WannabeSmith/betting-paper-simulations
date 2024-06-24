@@ -4,6 +4,7 @@ from confseq.betting import get_ci_seq
 from confseq.predmix import predmix_empbern_cs
 from small_sample_mean_bounds.bound import b_alpha_l2norm, b_alpha_linear
 from typing import Sequence
+from gaffke import gaffke
 
 
 def hoeffding_ci(x, times, alpha=0.05):
@@ -123,6 +124,7 @@ def maurer_pontil_empbern_ci(x, times, alpha=0.05):
 
     return l[times - 1], u[times - 1]
 
+
 def audibert_empbern_ci(x, times, alpha=0.05):
     x = np.array(x)
     S_t = np.cumsum(x)
@@ -184,6 +186,7 @@ class LBOW_Bettor:
         else:
             against = u_bdry
         return self.get_bet(against=against, idx=idx)
+
 
 def conbo_cs(
     x,
@@ -266,6 +269,7 @@ def conbo_cs(
 
     return l, u
 
+
 def lambda_COLT18_ONS(x, m, c=1 / 2):
     lambdas = np.zeros(len(x))
     lambdas[0] = 0
@@ -308,6 +312,7 @@ def banco(x: Sequence[float], alpha: float, running_intersection=False):
 
     return l, u
 
+
 def lambda_aKelly_oracle(x, m, mu, var, WoR=False, N=None, trunc_scale=1):
     if WoR:
         m_t = mu_t(x, m, N)
@@ -319,3 +324,17 @@ def lambda_aKelly_oracle(x, m, mu, var, WoR=False, N=None, trunc_scale=1):
     lambdas = np.minimum(trunc_scale / m_t, lambdas)
 
     return lambdas
+
+
+def gaffke_ci(x, alpha, n_uprime=1000):
+    gaffke_ub = gaffke(x=x, delta=alpha / 2, nUPrimes=n_uprime)
+    gaffke_lb = 1 - gaffke(x=1 - x, delta=alpha / 2, nUPrimes=n_uprime)
+
+    return gaffke_lb, gaffke_ub
+
+
+def gaffke_ci_seq(x, alpha, n_uprime, times, parallel=False):
+    def ci_fn(x):
+        return gaffke_ci(x, alpha=alpha)
+
+    return get_ci_seq(x, ci_fn, times=times, parallel=parallel)

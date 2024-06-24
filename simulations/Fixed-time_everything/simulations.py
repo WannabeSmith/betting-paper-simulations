@@ -53,7 +53,7 @@ cs_list = [
         lambda x: predmix_empbern_ci_seq(
             x, times=times, truncation=1 / 2, alpha=alpha, parallel=True
         ),
-        "VA-EB-CI [Rmk 1]",
+        "PrPl-EB-CI [Rmk 1]",
         "tab:blue",
         "--",
     ),
@@ -74,30 +74,30 @@ cs_list = [
 ]
 
 dgp_list = [
-    DataGeneratingProcess(
-        data_generator_fn=lambda: np.random.binomial(1, 0.5, N),
-        dist_fn=lambda x: binom.pmf(x, 1, 0.5),
-        mean=0.5,
-        name="Bernoulli_0.5_",
-        discrete=True,
-        title="$X_i \sim$ Bernoulli(1/2)",
-    ),
-    DataGeneratingProcess(
-        data_generator_fn=lambda: np.random.binomial(1, 0.1, N),
-        dist_fn=lambda x: binom.pmf(x, 1, 0.1),
-        mean=0.1,
-        name="Bernoulli_0.1_",
-        discrete=True,
-        title="$X_i \sim$ Bernoulli(1/10)",
-    ),
-    DataGeneratingProcess(
-        data_generator_fn=lambda: np.random.beta(1, 1, N),
-        dist_fn=lambda x: beta.pdf(x, 1, 1),
-        mean=0.5,
-        name="Beta_1,_1_",
-        discrete=False,
-        title="$X_i \sim$ Beta(1, 1)",
-    ),
+    # DataGeneratingProcess(
+    #     data_generator_fn=lambda: np.random.binomial(1, 0.5, N),
+    #     dist_fn=lambda x: binom.pmf(x, 1, 0.5),
+    #     mean=0.5,
+    #     name="Bernoulli_0.5_",
+    #     discrete=True,
+    #     title="$X_i \sim$ Bernoulli(1/2)",
+    # ),
+    # DataGeneratingProcess(
+    #     data_generator_fn=lambda: np.random.binomial(1, 0.1, N),
+    #     dist_fn=lambda x: binom.pmf(x, 1, 0.1),
+    #     mean=0.1,
+    #     name="Bernoulli_0.1_",
+    #     discrete=True,
+    #     title="$X_i \sim$ Bernoulli(1/10)",
+    # ),
+    # DataGeneratingProcess(
+    #     data_generator_fn=lambda: np.random.beta(1, 1, N),
+    #     dist_fn=lambda x: beta.pdf(x, 1, 1),
+    #     mean=0.5,
+    #     name="Beta_1,_1_",
+    #     discrete=False,
+    #     title="$X_i \sim$ Beta(1, 1)",
+    # ),
     DataGeneratingProcess(
         data_generator_fn=lambda: np.random.beta(10, 30, N),
         dist_fn=lambda x: beta.pdf(x, 10, 30),
